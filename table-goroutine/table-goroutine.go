@@ -2,10 +2,11 @@ package main
 
 import "fmt"
 
-func computeTable(number int, max int, slice []int) {
+func computeTable(number int, max int, slice []int, ch chan int) {
 	for multiple := 1; multiple <= max; multiple++ {
 		slice[multiple] = number * multiple
 	}
+	ch <- number
 }
 
 func printTable(n int, slice []int) {
@@ -21,8 +22,13 @@ const (
 
 func main() {
 	var array [countMax + 1][multMax + 1]int
+	ch := make(chan int)
 	for count := 1; count <= countMax; count++ {
-		go computeTable(count, multMax, array[count][:])
+		go computeTable(count, multMax, array[count][:], ch)
+	}
+
+	for count := 1; count <= countMax; count++ {
+		fmt.Printf("Completed %d\n", <-ch)
 	}
 
 	for count := 1; count <= countMax; count++ {
