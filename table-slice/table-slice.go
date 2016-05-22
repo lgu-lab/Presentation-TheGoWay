@@ -9,8 +9,8 @@ func computeTable(number int, max int, slice []int) {
 }
 
 func printTable(n int, slice []int) {
-	for multiple := 1; multiple < len(slice); multiple++ {
-		fmt.Printf("%d x %d = %d\n", n, multiple, slice[multiple])
+	for multiple, value := range slice {
+		fmt.Printf("%d x %d = %d\n", n, multiple+1, value)
 	}
 }
 
@@ -22,11 +22,11 @@ const (
 func main() {
 	var array [countMax + 1][multMax + 1]int
 	for count := 1; count <= countMax; count++ {
-		computeTable(1, multMax, array[count][:])
+		computeTable(count, multMax, array[count][:])
 	}
 
 	for count := 1; count <= countMax; count++ {
-		printTable(count, array[count][:multMax-1])
+		printTable(count, array[count][1:])
 	}
 
 }
