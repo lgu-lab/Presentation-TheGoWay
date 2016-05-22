@@ -2,10 +2,21 @@ package main
 
 import "fmt"
 
+func computeTable(count int, slice []int) {
+	for multiple := 1; multiple <= 10; multiple++ {
+		slice[multiple] = count * multiple
+	}
+}
+
+const (
+	countMax = 1
+	multMax  = 5
+)
+
 func main() {
-	var array [11][11]int
-	for count := 1; count <= 10; count++ {
-		for multiple := 1; multiple <= 10; multiple++ {
+	var array [countMax + 1][multMax + 1]int
+	for count := 1; count <= countMax; count++ {
+		for multiple := 1; multiple <= multMax; multiple++ {
 			array[count][multiple] = count * multiple
 		}
 	}
