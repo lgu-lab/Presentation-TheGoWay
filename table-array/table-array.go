@@ -2,31 +2,17 @@ package main
 
 import "fmt"
 
-func computeTable(number int, max int, slice []int) {
-	for multiple := 1; multiple <= max; multiple++ {
-		slice[multiple] = number * multiple
-	}
-}
-
-func printTable(n int, array []int) {
-	for multiple := 1; multiple < len(array); multiple++ {
-		fmt.Printf("%d x %d = %d\n", n, multiple, array[multiple])
-	}
-}
-
-const (
-	countMax = 1
-	multMax  = 5
-)
-
 func main() {
-	var array [countMax + 1][multMax + 1]int
-	for count := 1; count <= countMax; count++ {
-		computeTable(1, multMax, array[count][:])
+	var array [11][11]int
+	for count := 1; count <= 10; count++ {
+		for multiple := 1; multiple <= 10; multiple++ {
+			array[count][multiple] = count * multiple
+		}
 	}
-
-	for count := 1; count <= countMax; count++ {
-		printTable(count, array[count][:])
+	for count := 1; count < len(array); count++ {
+		for multiple := 1; multiple < len(array[0]); multiple++ {
+			fmt.Printf("%d x %d = %d\n", count, multiple, array[count][multiple])
+		}
+		fmt.Println()
 	}
-
 }
