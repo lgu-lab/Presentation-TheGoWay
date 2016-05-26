@@ -20,13 +20,13 @@ const (
 )
 
 func main() {
-	var array [countMax + 1][multMax + 1]int
+	var array [countMax + 1][multMax + 10]int
 	for count := 1; count <= countMax; count++ {
 		computeTable(count, multMax, array[count][:])
 	}
 
 	for count := 1; count <= countMax; count++ {
-		printTable(count, array[count][1:])
+		printTable(count, array[count][:])
 		fmt.Println()
 		if n := count; n == countMax {
 			fmt.Printf("Done writing %d tables\n.", n)
