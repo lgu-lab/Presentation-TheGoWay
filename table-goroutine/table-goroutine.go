@@ -33,6 +33,10 @@ func main() {
 
 	for count := 1; count <= countMax; count++ {
 		printTable(count, array[count][1:])
+		fmt.Println()
+		if n := count; n == countMax {
+			fmt.Printf("Done writing %d tables\n.", n)
+		}
 	}
 
 }
