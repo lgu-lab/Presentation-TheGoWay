@@ -12,8 +12,8 @@ func computeTable(number int) *[multMax]int {
 }
 
 func printTable(n int, array *[multMax]int) {
-	for multiple, value := range array {
-		fmt.Printf("%d x %d = %d\n", n, multiple+1, value)
+	for index, value := range array {
+		fmt.Printf("%d x %d = %d\n", n, index+1, value)
 	}
 }
 
@@ -24,14 +24,14 @@ const (
 
 func main() {
 	calcMap := make(map[int]*[multMax]int)
-	for count := 0; count < countMax; count++ {
-		calcMap[count] = computeTable(count + 1)
+	for count := 1; count <= countMax; count++ {
+		calcMap[count] = computeTable(count)
 	}
 
-	for count := 0; count < countMax; count++ {
+	for count := 1; count <= countMax; count++ {
 		printTable(count+1, calcMap[count])
 		fmt.Println()
-		if n := count + 1; n == countMax {
+		if n := count; n == countMax {
 			fmt.Printf("Done writing %d tables\n.", n)
 		}
 	}
