@@ -6,8 +6,7 @@ import (
 )
 
 const (
-	n    int = 1
-	mult int = 3
+	n int = 1
 )
 
 var testAgainst = [...]int{1, 2, 3, 4, 5}

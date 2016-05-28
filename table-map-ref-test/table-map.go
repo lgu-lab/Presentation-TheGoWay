@@ -29,7 +29,7 @@ func main() {
 	}
 
 	for count := 1; count <= countMax; count++ {
-		printTable(count+1, calcMap[count])
+		printTable(count, calcMap[count])
 		fmt.Println()
 		if n := count; n == countMax {
 			fmt.Printf("Done writing %d tables\n.", n)
