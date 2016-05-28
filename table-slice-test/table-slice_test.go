@@ -31,3 +31,11 @@ func ExamplePrint() {
 	//1 x 2 = 2
 	//1 x 3 = 3
 }
+
+func BenchmarkCompute(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var table [mult + 1]int
+		computeTable(i, mult, table[1:])
+	}
+
+}
