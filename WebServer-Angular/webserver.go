@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -38,5 +40,7 @@ func main() {
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
 
 	fmt.Println("Starting server on port 8080")
-	log.Fatal(http.ListenAndServe("localhost:8080", router))
+
+	loggedRouter := handlers.LoggingHandler(os.Stdout, router)
+	log.Fatal(http.ListenAndServe("localhost:8080", loggedRouter))
 }
