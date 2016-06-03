@@ -17,10 +17,13 @@ app.config(function ($routeProvider) {
   });
 });
 
-app.controller('aboutController', function ($scope, $http) {
+app.controller('aboutController', function ($scope, $http, $location) {
   $http.get('/api/').success(function (data) {
     $scope.ApiVersion = data.Version
   });
+  $scope.compute = function (n, m) {
+    $location.path("/table/" + n + "/" + m).replace();
+  }
 });
 
 app.controller('historyController', function ($scope, $http) {

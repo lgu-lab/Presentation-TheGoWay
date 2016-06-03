@@ -19,16 +19,17 @@ type HistoryDb struct {
 	History []HistoryItem `json:"History"`
 }
 
-var historyDb = HistoryDb{History: []HistoryItem{
-	HistoryItem{N: 1, M: 10},
-	HistoryItem{N: 2, M: 10},
-	HistoryItem{N: 3, M: 5},
-	HistoryItem{N: 4, M: 5}}}
+var historyDb = HistoryDb{History: []HistoryItem{}}
 
 func (db *HistoryDb) append(n, m int) {
+
 	item := HistoryItem{N: n, M: m}
 	db.History = append(db.History, item)
-	db.History = db.History[1:]
+	histCount := len(db.History)
+	if histCount > 5 {
+		histCount = 5
+	}
+	db.History = db.History[len(db.History)-histCount : len(db.History)]
 }
 
 func httpHistory(w http.ResponseWriter, r *http.Request) {
