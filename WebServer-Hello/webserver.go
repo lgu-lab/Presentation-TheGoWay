@@ -26,7 +26,7 @@ func main() {
 		// 		http.NotFound(w, r)
 		// 		return
 		// 	}
-		// 	httpHandler(w, r)
+		// 	httpHello(w, r)
 		// })
 	}
 	fmt.Println("Starting server on port 8080")
