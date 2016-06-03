@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">History</div>
+  <div class="panel-body">
+    <p>Lists the last 4 queries done on the API</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th style="text-align:center">Number</th>
+      <th style="text-align:center">Multiples</th>
+    </tr>
+    <tr ng-repeat="item in History">
+      <td>{{item.Number}}</td>
+      <td>{{item.Multiples}}</td>
+    </tr>
+  </table>
+</div>
